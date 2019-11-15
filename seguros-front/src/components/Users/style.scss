@@ -1,0 +1,19 @@
+@import "../variables.scss";
+
+.move {
+  background-color: $bg-form;
+  color: white;
+  padding: 2%;
+  border-radius: 20px;
+  .img-bg {
+    background-color: $bg-form;
+    padding: 2%;
+  }
+  .card-body {
+    color: rgb(255, 255, 255);
+    background-color: $blue-team;
+  }
+  .btn {
+    background-color: $green-team;
+  }
+}

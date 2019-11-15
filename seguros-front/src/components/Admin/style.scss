@@ -1,0 +1,29 @@
+@import "../variables.scss";
+
+.move {
+  background-color: $bg-form;
+  color: white;
+  display: flex;
+  padding: 2%;
+  height: 80%;
+  width: 100%;
+  border-radius: 20px;
+  .img-bg {
+    background-color: $bg-form;
+    padding: 2%;
+  }
+  .card-body {
+    color: rgb(255, 255, 255);
+    background-color: $blue-team;
+  }
+  .btn {
+    background-color: $green-team;
+  }
+  #red {
+    background-color: rgba(255, 0, 0, 0.678);
+    margin-left: 10px;
+  }
+  .tb {
+    border-radius: 10px;
+  }
+}

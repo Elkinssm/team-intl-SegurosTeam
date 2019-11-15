@@ -1,0 +1,17 @@
+.layout {
+  border: 5px solid black;
+  min-height: 100vh;
+  height: auto;
+  background-image: linear-gradient(rgba(81, 165, 62, 0.705), rgba(79, 82, 79, 0.623)),
+    url(https://images.pexels.com/photos/13861/IMG_3496bfree.jpg?cs=srgb&dl=adult-automotive-blur-13861.jpg&fm=jpg);
+  background-size: cover;
+}
+
+.dinamic-content {
+  min-height: 80vh;
+  width: 100%;
+  padding-top: 2%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

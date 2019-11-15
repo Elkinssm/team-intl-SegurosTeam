@@ -1,0 +1,18 @@
+@import "../variables.scss";
+
+.bg-start {
+  background-color: $bg-form;
+  color: white;
+  border-radius: 20px;
+  height: 80%;
+  width: 80%;
+  .bg {
+    background-color: $blue-team;
+    border-radius: 10px;
+  }
+  .card {
+    padding: 1%;
+    display: flex;
+    justify-content: center;
+  }
+}
