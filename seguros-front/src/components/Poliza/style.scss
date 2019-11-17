@@ -1,0 +1,17 @@
+@import "../variables.scss";
+
+.add {
+  margin: 20px;
+  width: 50%;
+  background-color: $bg-form;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3%;
+  border-radius: 3%;
+  color: white;
+  .form {
+    padding: 2%;
+  }
+}
