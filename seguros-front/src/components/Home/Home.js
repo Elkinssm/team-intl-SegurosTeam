@@ -1,30 +1,68 @@
 import React, { Component } from "react";
 import Layout from "../Layout";
+import axios from "axios";
 import { Form, Button } from "react-bootstrap";
 import "./style.scss";
 
 export default class Home extends Component {
-  click = e => {
-    e.preventDefault();
-    //Get data
-    const user = e.target.elements[0].value;
-    const password = e.target.elements[1].value;
+  constructor(props) {
+    super(props);
 
-    console.log("user", user, "pass", password);
-    //TODO:Get Request to API
+    this.state = {
+      error: false,
+      errorMessage: "",
+      usr_email: "",
+      usr_password: ""
+    };
 
-    this.props.history.push("./users");
-  };
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleInputChange(event) {
+    const target = event.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
+
+    this.setState({
+      [name]: value
+    });
+  }
+
+  handleSubmit(event) {
+    const headers = {
+      'Content-Type': 'application/json'
+    }
+    const user = {
+      email: this.state.usr_email,
+      clave: this.state.usr_password
+    };
+    
+    axios.post(`https://localhost:5001/api/v2/Usuario/Authenticate`, user, {
+      headers: headers
+    }).then(response => {
+      let user = response.data.response;
+      const token = user.token;
+    }).catch(e => {
+      alert('Se ha presentado un error: ');
+    });
+    event.preventDefault();
+  }
 
   render() {
     return (
       <Layout>
         <div className="home">
           <h2>Ingresar</h2>
-          <Form className="col-12" onSubmit={e => this.click(e)}>
+          <Form className="col-12" onSubmit={this.handleSubmit}>
             <Form.Group controlId="formBasicEmail">
               <Form.Label>Correo Electronico</Form.Label>
-              <Form.Control type="email" placeholder="Ingrese su correo" />
+              <Form.Control 
+                type="email" 
+                placeholder="Ingrese su correo"
+                name="usr_email"
+                onChange={this.handleInputChange} 
+              />
               <Form.Text className="text-disable">
                 Nunca comparta su infomacion con nadie
               </Form.Text>
@@ -35,6 +73,9 @@ export default class Home extends Component {
                 type="password"
                 placeholder="Ingrese su contraseña"
                 autoComplete="on"
+                name="usr_password"
+                value={this.state.usr_password}
+                onChange={this.handleInputChange}
                 required
               />
             </Form.Group>
@@ -44,7 +85,6 @@ export default class Home extends Component {
             <Button
               variant="success"
               type="submit"
-              onClick={() => this.props.history.push("./users")}
             >
               Enviar
             </Button>

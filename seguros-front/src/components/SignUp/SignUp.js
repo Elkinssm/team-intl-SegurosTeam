@@ -17,7 +17,6 @@ export default class SignUp extends Component {
       usr_apellido: "",
       usr_ciudad: "",
       usr_documento: "",
-      usr_email: "",
       usr_fecha_nacimiento: "",
       usr_tipo_documento: "",
       usr_email: "",
@@ -108,6 +107,7 @@ export default class SignUp extends Component {
                     required
                     placeholder="Ingrese su nombre"
                     name="usr_nombre"
+                    value={this.state.usr_nombre}
                     onChange={this.handleInputChange}
                   />
                 </Form.Group>
