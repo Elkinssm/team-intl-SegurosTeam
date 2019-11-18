@@ -46,7 +46,7 @@ export default class SignUp extends Component {
 
   handleInputChange(event) {
     const target = event.target;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const value = target.type === "checkbox" ? target.checked : target.value;
     const name = target.name;
 
     this.setState({
@@ -56,8 +56,8 @@ export default class SignUp extends Component {
 
   handleSubmit(event) {
     const headers = {
-      'Content-Type': 'application/json'
-    }
+      "Content-Type": "application/json"
+    };
     const user = {
       nombre: this.state.usr_nombre,
       apellido: this.state.usr_apellido,
@@ -69,16 +69,17 @@ export default class SignUp extends Component {
       email: this.state.usr_email,
       clave: this.state.usr_password
     };
-    debugger;
 
-    axios.post(`https://localhost:5001/api/v2/Usuario/SaveUser`, user, {
-      headers: headers
-    }).then(response => {
-      alert('Usuario registrado: ' + this.state.usr_email);
-
-    }).catch(e => {
-      alert('Se ha presentado un error: ');
-    });
+    axios
+      .post(`https://localhost:5001/api/v2/Usuario/SaveUser`, user, {
+        headers: headers
+      })
+      .then(response => {
+        alert("Usuario registrado: " + this.state.usr_email);
+      })
+      .catch(e => {
+        alert("Se ha presentado un error: ");
+      });
     event.preventDefault();
   }
 
@@ -128,7 +129,8 @@ export default class SignUp extends Component {
               <Form.Row>
                 <Form.Group className="form" sm={12} md={6}>
                   <Form.Label>Tipo de documento</Form.Label>
-                  <Form.Control as="select"
+                  <Form.Control
+                    as="select"
                     name="usr_tipo_documento"
                     value={this.state.usr_tipo_documento}
                     onChange={this.handleInputChange}
@@ -160,8 +162,9 @@ export default class SignUp extends Component {
               <Form.Row>
                 <Form.Group className="form" sm={12} md={6}>
                   <Form.Label>Fecha Nacimiento</Form.Label>
-                  <Form.Control 
-                    required type="date" 
+                  <Form.Control
+                    required
+                    type="date"
                     name="usr_fecha_nacimiento"
                     value={this.state.usr_fecha_nacimiento}
                     onChange={this.handleInputChange}
@@ -171,7 +174,8 @@ export default class SignUp extends Component {
                 <Form.Group className="form" sm={12} md={6}>
                   <Form.Label>Ciudad</Form.Label>
 
-                  <Form.Control as="select" 
+                  <Form.Control
+                    as="select"
                     name="usr_ciudad"
                     onChange={this.handleInputChange}
                     value={this.state.usr_ciudad}
@@ -184,7 +188,6 @@ export default class SignUp extends Component {
                         </option>
                       );
                     })}
-                    
                   </Form.Control>
                 </Form.Group>
               </Form.Row>
@@ -197,8 +200,8 @@ export default class SignUp extends Component {
                     placeholder="Ingrese su correo"
                     name="usr_email"
                     value={this.state.usr_email}
-                    onChange={this.handleInputChange} />
-                  
+                    onChange={this.handleInputChange}
+                  />
                 </Form.Group>
 
                 <Form.Group className="form" sm={12} md={6}>
@@ -209,15 +212,12 @@ export default class SignUp extends Component {
                     placeholder="Ingrese su contraseña"
                     name="usr_password"
                     value={this.state.usr_password}
-                    onChange={this.handleInputChange} />
-                  
+                    onChange={this.handleInputChange}
+                  />
                 </Form.Group>
               </Form.Row>
 
-              <Button
-                variant="success"
-                type="submit"
-              >
+              <Button variant="success" type="submit">
                 Enviar
               </Button>
             </Form>

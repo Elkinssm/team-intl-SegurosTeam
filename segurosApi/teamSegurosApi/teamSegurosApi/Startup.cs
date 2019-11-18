@@ -84,6 +84,8 @@ namespace teamSegurosApi
                 });
 
             services.AddTransient<IUsuarioService, UsuarioService>();
+            services.AddTransient<ISeguroService, SeguroService>();
+            services.AddTransient<IVehiculoService, VehiculoService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

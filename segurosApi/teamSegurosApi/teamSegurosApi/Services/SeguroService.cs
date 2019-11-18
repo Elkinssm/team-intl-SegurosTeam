@@ -6,7 +6,7 @@ using teamSegurosApi.Models;
 
 namespace teamSegurosApi.Services
 {
-    public class SeguroService
+    public class SeguroService : ISeguroService
     {
         private readonly SegurosContext _db;
         private const decimal _precioBase = 1000000;

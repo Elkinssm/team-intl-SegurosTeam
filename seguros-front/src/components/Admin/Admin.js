@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import { Switch, Route } from "react-router-dom";
+import Vehiculo from "../Vehiculo";
 import Layout from "../Layout";
-import { Container, Jumbotron, Card, Table } from "react-bootstrap";
+import { Container, Jumbotron, Card, Table, Row, Col } from "react-bootstrap";
 
 import "./style.scss";
 
@@ -8,23 +10,38 @@ export class Users extends Component {
   render() {
     return (
       <Layout>
+        <Switch>
+          <Route exact path="/vehiculo" Component={Vehiculo}></Route>
+        </Switch>
         <Jumbotron fluid className="move">
           <Container>
             <h1>Panel de Administrador</h1>
-            <Card style={{ width: "18rem" }} className="img-bg">
-              <Card.Img
-                variant="top"
-                src="https://image.flaticon.com/icons/svg/1118/1118898.svg"
-              />
-              <Card.Body className="card-body">
-                <Card.Title>Admin</Card.Title>
-                <Card.Text>Datos administrador</Card.Text>
-              </Card.Body>
-            </Card>
-            <p>
-              Administre todos los vehiculos
-              <br /> y polizas registrados en el sistema
-            </p>
+            <Row>
+              <Col>
+                <ul>
+                  <li>
+                    <a href="/vehiculo">Registrar Vehiculo</a>
+                  </li>
+                  <li></li>
+                </ul>
+              </Col>
+              <Col>
+                <Card style={{ width: "18rem" }} className="img-bg">
+                  <Card.Img
+                    variant="top"
+                    src="https://image.flaticon.com/icons/svg/1118/1118898.svg"
+                  />
+                  <Card.Body className="card-body">
+                    <Card.Title>Admin</Card.Title>
+                    <Card.Text>Datos administrador</Card.Text>
+                  </Card.Body>
+                </Card>
+                <p>
+                  Administre todos los vehiculos
+                  <br /> y polizas registrados en el sistema
+                </p>
+              </Col>
+            </Row>
           </Container>
           <Table striped bordered hover variant="dark" className="tb">
             <thead>

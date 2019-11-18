@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
+using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
-using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
 using teamSegurosApi.Data;
 using teamSegurosApi.Data.Dto;
 using teamSegurosApi.Helpers;
@@ -52,9 +52,10 @@ namespace teamSegurosApi.Services
                 Clave = user.Clave,
                 TipoDocumentoId = user.TipoDocumentoId.ToString(),
                 NumeroDocumento = user.NumeroDocumento,
-                RolId = user.RolId.ToString(),
-                Rol = user.Rol.Nombre
+                RolId = user.RolId.ToString()
             };
+            var Role = _db.Rol.FirstOrDefault(r => r.Id == user.RolId);
+            usuario.RolId = Role.Nombre;
             usuario.Token = tokenHandler.WriteToken(token);
 
             responsePackage.Message = "";

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using teamSegurosApi.Data;
-using teamSegurosApi.Models;
+using teamSegurosApi.Data.Dto;
 
 namespace teamSegurosApi.Controllers
 {
@@ -17,13 +17,10 @@ namespace teamSegurosApi.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Marca> GetAll()
+        [Route("GetAll")]
+        public IEnumerable<MarcaDto> GetAll()
         {
-            return _context.Marca.ToList();
+            return _context.Marca.Select(m => new MarcaDto { Id = m.Id, Nombre = m.Nombre }).ToList();
         }
-
-
-
-
     }
 }

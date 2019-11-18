@@ -12,7 +12,6 @@ export default class Menu extends Component {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
               <Nav.Link href="/home">Inicio</Nav.Link>
-              <Nav.Link href="/users">Usuario</Nav.Link>
               <Nav.Link href="/seguro">Seguro</Nav.Link>
               <Nav.Link href="/contact">Contactenos</Nav.Link>
             </Nav>

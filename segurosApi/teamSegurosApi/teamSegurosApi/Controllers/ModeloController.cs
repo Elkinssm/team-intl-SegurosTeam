@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Linq;
 using teamSegurosApi.Data;
+using teamSegurosApi.Data.Dto;
 
 namespace teamSegurosApi.Controllers
 {
@@ -15,10 +17,12 @@ namespace teamSegurosApi.Controllers
         }
 
         [HttpGet]
-        [Route("GetAll")]
-        public IActionResult GetAll()
+        [Route("GetByMarca")]
+        public IActionResult GetByMarca(string marca)
         {
-            var modelos = _context.Modelo.ToList();
+            var modelos = _context.Modelo
+                .Where(m => m.MarcaId == Guid.Parse(marca))
+                .Select(m => new ModeloDto { Id = m.Id, Nombre = m.Nombre }).ToList();
             return Ok(modelos);
         }
 
