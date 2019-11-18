@@ -7,6 +7,12 @@ Proyecto final del Top Gun Lab de Team International, donde se aplica lo aprendi
 # Login app
 <img src="https://user-images.githubusercontent.com/52393397/69060777-f3c29d80-09e5-11ea-8678-5bf8f05dc761.png">
 # Panel admin 
+
 Al validar que el rol ingresado es admin se redirige al dashboard de administrador
 <img src="https://user-images.githubusercontent.com/52393397/69060888-2bc9e080-09e6-11ea-9019-8e89f2b162ca.png">
 Donde se puede tener un control de los usuarios registrados en la app, ademas de registrar y asegurar los diferentes vehiculos.
+# Registrar un vehiculo
+
+En este panel se ingresa el vehiculo a registrar en nuestra app
+<img src="https://user-images.githubusercontent.com/52393397/69061118-93802b80-09e6-11ea-98c5-27cf99fa294d.png">
+
