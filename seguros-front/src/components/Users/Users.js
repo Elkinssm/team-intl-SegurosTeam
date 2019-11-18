@@ -16,10 +16,10 @@ export class Users extends Component {
   componentDidMount() {
     axios
       .get(
-        `https://localhost:5001​/api​/v2​/Vehiculo​/TraerVehiculosRegistrados`
+        `https://localhost:5001​/api/v2/Vehiculo/TraerVehiculosCliente`
       )
       .then(res => {
-        const vehiculos = res.data;
+        const vehiculos = res.data.result;
         console.log(vehiculos);
         this.setState({ vehiculos });
       });

@@ -1,11 +1,10 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using teamSegurosApi.Data.Dto;
 using teamSegurosApi.Services;
 
 namespace teamSegurosApi.Controllers
 {
-    [Authorize]
+
     [ApiController]
     [Route("api/v2/[controller]")]
     public class SeguroController : ControllerBase

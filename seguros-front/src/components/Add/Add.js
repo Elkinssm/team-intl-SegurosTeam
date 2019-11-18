@@ -16,21 +16,19 @@ class Add extends Component {
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.getVehiculosNo = this.getVehiculosNo.bind(this);
   }
   componentDidMount() {
-    axios.get(`https://localhost:5001/api/v2/Marca/GetAll`).then(res => {
-      const marcas = res.data;
-      console.log(marcas);  
-      this.setState({ marcas });
+    axios.get(`https://localhost:5001/api/v2/Usuario/GetAll`).then(res => {
+      const usuarios = res.data.result;
+      console.log(usuarios);
+      this.setState({ usuarios });
     });
-  }
 
-  getVehiculosNo() {
-    axios.get(`https://localhost:5001/api/v2/Vehiculo/TraerVehiculosNoRegistrados`)
+    axios
+      .get(`https://localhost:5001/api/v2/Vehiculo/TraerVehiculosNoRegistrados`)
 
       .then(res => {
-        const vehiculos = res.data;
+        const vehiculos = res.data.result;
         console.log(vehiculos);
         this.setState({ vehiculos });
       });
@@ -50,10 +48,23 @@ class Add extends Component {
     const headers = {
       "Content-Type": "application/json"
     };
-    const vehiculo = {
-      placa: this.state.placa
+    const seguro = {
+      vehiculoId: this.state.vehiculo,
+      usuarioId: this.state.usuario
     };
-
+    debugger;
+    // let history = useHistory();
+    axios
+      .post(`https://localhost:5001/api/v2/Seguro/AsegurarVehiculo`, seguro, {
+        headers: headers
+      })
+      .then(response => {
+        alert("Vehiculo asegurado");
+      })
+      .catch(e => {
+        alert("Se ha presentado un error: " + e.toString());
+      });
+    event.preventDefault();
   }
   render() {
     const { usuarios, vehiculos } = this.state;
@@ -70,6 +81,7 @@ class Add extends Component {
                 value={this.state.usuario}
                 onChange={this.handleInputChange}
               >
+                <option value=""></option>
                 {usuarios.map((option, index) => {
                   return (
                     <option key={index} value={option.id}>
@@ -87,21 +99,18 @@ class Add extends Component {
                 value={this.state.vehiculo}
                 onChange={this.handleInputChange}
               >
+                <option value=""></option>
                 {vehiculos.map((option, index) => {
                   return (
                     <option key={index} value={option.id}>
-                      {option.nombre}
+                      {option.placa}
                     </option>
                   );
                 })}
               </Form.Control>
             </Form.Group>
 
-            <Button
-              variant="success"
-              type="button"
-              onClick={() => this.props.history.push("./admin")}
-            >
+            <Button variant="success" type="submit">
               Agregar
             </Button>
           </Form>

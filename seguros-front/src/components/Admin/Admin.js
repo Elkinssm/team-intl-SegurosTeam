@@ -15,9 +15,8 @@ export class Users extends Component {
   }
 
   componentDidMount() {
-    this.setState({ usuarios: [] });
     axios.get(`https://localhost:5001/api/v2/Usuario/GetAll`).then(res => {
-      const usuarios = res.data;
+      const usuarios = res.data.result;
       console.log(usuarios);
       this.setState({ usuarios });
     });
@@ -27,10 +26,10 @@ export class Users extends Component {
     const usuarios = this.state.usuarios;
     debugger;
     const userItems = usuarios.map(u => (
-      <tr key={u.Id}>
-        <th>{u.Nombre}</th>
-        <th>{u.Apellido}</th>
-        <th>{u.NumeroDocumento}</th>
+      <tr key={u.id}>
+        <td>{u.nombre}</td>
+        <td>{u.apellido}</td>
+        <td>{u.numeroDocumento}</td>
       </tr>
     ));
     return (
@@ -80,87 +79,9 @@ export class Users extends Component {
                 <th>Nombre</th>
                 <th>Apellido</th>
                 <th>Numero Documento</th>
-                <th>Add</th>
-                <th>Delete</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td>{userItems} </td>
-
-                <td></td>
-
-                <td></td>
-
-                <td>
-                  <button
-                    type="button"
-                    class="btn  rounded-circle d-flex align-content-center"
-                  >
-                    +
-                  </button>
-                </td>
-                <td>
-                  <button
-                    id="red"
-                    type="button"
-                    class="btn rounded-circle d-flex justy-content-center"
-                  >
-                    -
-                  </button>
-                </td>
-              </tr>
-              {/* <tr>
-                
-
-                <td></td>
-
-                <td></td>
-
-                <td></td>
-
-                <td>
-                  <button
-                    type="button"
-                    class="btn  rounded-circle d-flex align-content-center"
-                  >
-                    +
-                  </button>
-                </td>
-                <td>
-                  <button
-                    id="red"
-                    type="button"
-                    class="btn rounded-circle d-flex align-content-center"
-                  >
-                    -
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>
-                  <button
-                    type="button"
-                    class="btn rounded-circle d-flex align-content-center"
-                  >
-                    +
-                  </button>
-                </td>
-                <td>
-                  <button
-                    id="red"
-                    type="button"
-                    class="btn rounded-circle d-flex align-content-center"
-                  >
-                    -
-                  </button>
-                </td>
-              </tr> */}
-            </tbody>
+            <tbody>{userItems}</tbody>
           </Table>
         </Jumbotron>
       </Layout>
