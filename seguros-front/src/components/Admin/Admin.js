@@ -2,12 +2,37 @@ import React, { Component } from "react";
 import { Switch, Route } from "react-router-dom";
 import Vehiculo from "../Vehiculo";
 import Layout from "../Layout";
+import axios from "axios";
 import { Container, Jumbotron, Card, Table, Row, Col } from "react-bootstrap";
-
 import "./style.scss";
 
 export class Users extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      usuarios: []
+    };
+  }
+
+  componentDidMount() {
+    this.setState({ usuarios: [] });
+    axios.get(`https://localhost:5001/api/v2/Usuario/GetAll`).then(res => {
+      const usuarios = res.data;
+      console.log(usuarios);
+      this.setState({ usuarios });
+    });
+  }
+
   render() {
+    const usuarios = this.state.usuarios;
+    debugger;
+    const userItems = usuarios.map(u => (
+      <tr key={u.Id}>
+        <th>{u.Nombre}</th>
+        <th>{u.Apellido}</th>
+        <th>{u.NumeroDocumento}</th>
+      </tr>
+    ));
     return (
       <Layout>
         <Switch>
@@ -18,12 +43,18 @@ export class Users extends Component {
             <h1>Panel de Administrador</h1>
             <Row>
               <Col>
-                <ul>
-                  <li>
-                    <a href="/vehiculo">Registrar Vehiculo</a>
-                  </li>
-                  <li></li>
-                </ul>
+                <Card>
+                  <Card.Body className="panel">
+                    <ul>
+                      <li>
+                        <a href="/vehiculo">Registrar Vehiculo</a>
+                      </li>
+                      <li>
+                        <a href="/add">Asegurar vehiculo</a>
+                      </li>
+                    </ul>
+                  </Card.Body>
+                </Card>
               </Col>
               <Col>
                 <Card style={{ width: "18rem" }} className="img-bg">
@@ -46,20 +77,21 @@ export class Users extends Component {
           <Table striped bordered hover variant="dark" className="tb">
             <thead>
               <tr>
-                <th>#</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Username</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Numero Documento</th>
                 <th>Add</th>
                 <th>Delete</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>1</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
+                <td>{userItems} </td>
+
+                <td></td>
+
+                <td></td>
+
                 <td>
                   <button
                     type="button"
@@ -78,11 +110,15 @@ export class Users extends Component {
                   </button>
                 </td>
               </tr>
-              <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
+              {/* <tr>
+                
+
+                <td></td>
+
+                <td></td>
+
+                <td></td>
+
                 <td>
                   <button
                     type="button"
@@ -102,9 +138,10 @@ export class Users extends Component {
                 </td>
               </tr>
               <tr>
-                <td>3</td>
-                <td colSpan="2">Larry the Bird</td>
-                <td>@twitter</td>
+                
+                <td></td>
+                <td></td>
+                <td></td>
                 <td>
                   <button
                     type="button"
@@ -122,7 +159,7 @@ export class Users extends Component {
                     -
                   </button>
                 </td>
-              </tr>
+              </tr> */}
             </tbody>
           </Table>
         </Jumbotron>

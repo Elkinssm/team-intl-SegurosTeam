@@ -26,4 +26,17 @@
   .tb {
     border-radius: 10px;
   }
+  .panel {
+    background-color: $blue-team;
+    border-radius: 20px;
+  }
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: $bg-form;
+    border-radius: 0.25rem;
+  }
 }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System;
+using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
@@ -102,6 +103,21 @@ namespace teamSegurosApi.Services
                 responsePackage.Errors = ex;
                 return responsePackage;
             }
+        }
+
+        public ResponsePackage<IEnumerable<UsuarioDto>> GetUsuarios()
+        {
+            var responsePackage = new ResponsePackage<IEnumerable<UsuarioDto>>();
+            var usuarios = _db.Usuario.Select(u => new UsuarioDto
+            {
+                Id = u.Id.ToString(),
+                Nombre = u.Nombre,
+                Apellido = u.Apellido,
+                NumeroDocumento = u.NumeroDocumento
+            });
+            responsePackage.Message = "Se ha presentado un error al guardar un usuario";
+            responsePackage.Result = usuarios;
+            return responsePackage;
         }
     }
 }

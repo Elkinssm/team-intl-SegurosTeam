@@ -1,11 +1,34 @@
 import React, { Component } from "react";
 import Layout from "../Layout";
+import axios from "axios";
 import { Container, Jumbotron, Card, Table } from "react-bootstrap";
 
 import "./style.scss";
 
 export class Users extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      vehiculos: []
+    };
+  }
+
+  componentDidMount() {
+    axios
+      .get(
+        `https://localhost:5001​/api​/v2​/Vehiculo​/TraerVehiculosRegistrados`
+      )
+      .then(res => {
+        const vehiculos = res.data;
+        console.log(vehiculos);
+        this.setState({ vehiculos });
+      });
+  }
+
   render() {
+    const { vehiculos } = this.state;
+    const vehiculosItems = vehiculos.map(v => <li>{v}</li>);
+
     return (
       <Layout>
         <Jumbotron fluid className="move">
@@ -33,21 +56,20 @@ export class Users extends Component {
           <Table striped bordered hover variant="dark" className="tab">
             <thead>
               <tr>
-                <th>#</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Username</th>
+                <th>Marca</th>
+                <th>Modelo</th>
                 <th>Todo</th>
                 <th>Add</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>1</td>
+                <td>{vehiculosItems}</td>
 
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
+                <td></td>
+
+                <td></td>
+
                 <td>
                   <button
                     type="button"
@@ -57,9 +79,8 @@ export class Users extends Component {
                   </button>
                 </td>
               </tr>
-
+              {/* 
               <tr>
-                <td>2</td>
                 <td>Jacob</td>
                 <td>Thornton</td>
                 <td>@fat</td>
@@ -73,7 +94,6 @@ export class Users extends Component {
                 </td>
               </tr>
               <tr>
-                <td>3</td>
                 <td>Larry the Bird</td>
                 <td>Last</td>
                 <td>@twitter</td>
@@ -85,7 +105,7 @@ export class Users extends Component {
                     +
                   </button>
                 </td>
-              </tr>
+              </tr> */}
             </tbody>
           </Table>
         </Jumbotron>

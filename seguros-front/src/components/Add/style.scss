@@ -1,0 +1,16 @@
+@import "../variables.scss";
+
+.add {
+  width: 50%;
+  background-color: $bg-form;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 3rem;
+  border-radius: 3%;
+  color: white;
+}
+.text-disable {
+  color: $help-color;
+}

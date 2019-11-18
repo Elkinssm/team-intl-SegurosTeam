@@ -10,6 +10,7 @@ import SignUp from "./components/SignUp";
 import Start from "./components/Start";
 import Admin from "./components/Admin";
 import Vehiculo from "./components/Vehiculo"
+import Add from "./components/Add"
 import "./App.scss";
 
 const history = createBrowserHistory();
@@ -25,6 +26,7 @@ function App() {
       <Route path="/sign-up" component={SignUp}></Route>
       <Route path="/admin" component={Admin}></Route>
       <Route path="/vehiculo"component={Vehiculo}></Route>
+      <Route path="/add"component={Add}></Route>
     </Router>
   );
 }

@@ -1,4 +1,5 @@
-﻿using teamSegurosApi.Data;
+﻿using System.Collections.Generic;
+using teamSegurosApi.Data;
 using teamSegurosApi.Data.Dto;
 
 namespace teamSegurosApi.Services
@@ -7,5 +8,6 @@ namespace teamSegurosApi.Services
     {
         ResponsePackage<bool> SaveUSer(UsuarioDto usuarioDto);
         ResponsePackage<UsuarioDto> Authenticate(string email, string clave);
+        ResponsePackage<IEnumerable<UsuarioDto>> GetUsuarios();
     }
 }

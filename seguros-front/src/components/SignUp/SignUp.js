@@ -217,7 +217,11 @@ export default class SignUp extends Component {
                 </Form.Group>
               </Form.Row>
 
-              <Button variant="success" type="submit">
+              <Button
+                variant="success"
+                type="submit"
+                onClick={() => this.props.history.push("./home")}
+              >
                 Enviar
               </Button>
             </Form>

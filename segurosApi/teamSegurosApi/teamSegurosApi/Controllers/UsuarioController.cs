@@ -33,5 +33,14 @@ namespace teamSegurosApi.Controllers
             var response = _usuarioService.Authenticate(signInDto.Email, signInDto.Clave);
             return Ok(response);
         }
+
+        [AllowAnonymous]
+        [HttpGet]
+        [Route("GetAll")]
+        public IActionResult GetAll()
+        {
+            var response = _usuarioService.GetUsuarios();
+            return Ok(response);
+        }
     }
 }
