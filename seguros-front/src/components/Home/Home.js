@@ -49,6 +49,7 @@ export default class Home extends Component {
         const token = user.token;
         this.setToken(token); // Setting the token in localStorage
         debugger;
+        this.setClienteId(user.id);
         if (user.rolId === "Cliente") {
           alert("Soy cliente");
           this.props.history.push("/users");
@@ -84,12 +85,15 @@ export default class Home extends Component {
       return false;
     }
   }
-
   setToken(idToken) {
     // Saves user token to localStorage
     localStorage.setItem("id_token", idToken);
   }
 
+  setClienteId(clienteId) {
+    // Saves user token to localStorage
+    localStorage.setItem("id_cliente", clienteId);
+  }
   getToken() {
     // Retrieves the user token from localStorage
     return localStorage.getItem("id_token");

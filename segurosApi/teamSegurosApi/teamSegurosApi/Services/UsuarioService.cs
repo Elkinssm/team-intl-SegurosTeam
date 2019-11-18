@@ -47,6 +47,7 @@ namespace teamSegurosApi.Services
             var token = tokenHandler.CreateToken(tokenDescriptor);
             var usuario = new UsuarioDto
             {
+                Id = user.Id.ToString(),
                 Nombre = user.Nombre,
                 Apellido = user.Apellido,
                 Email = user.Email,

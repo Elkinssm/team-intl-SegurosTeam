@@ -11,18 +11,26 @@ export class Users extends Component {
     this.state = {
       vehiculos: []
     };
+
+    this.getClienteId = this.getClienteId.bind(this);
   }
 
   componentDidMount() {
+    debugger;
+    var clienteId = this.getClienteId();
     axios
-      .get(
-        `https://localhost:5001​/api/v2/Vehiculo/TraerVehiculosCliente`
-      )
+      .get(`https://localhost:5001​/api/v2/Vehiculo/TraerVehiculosCliente`, {
+        params: { clienteId }
+      })
       .then(res => {
         const vehiculos = res.data.result;
         console.log(vehiculos);
         this.setState({ vehiculos });
       });
+  }
+  getClienteId() {
+    // Retrieves the user id from localStorage
+    return localStorage.getItem("id_cliente");
   }
 
   render() {
@@ -62,51 +70,7 @@ export class Users extends Component {
                 <th>Add</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td>{vehiculosItems}</td>
-
-                <td></td>
-
-                <td></td>
-
-                <td>
-                  <button
-                    type="button"
-                    class="btn  rounded-circle d-flex align-content-center"
-                  >
-                    +
-                  </button>
-                </td>
-              </tr>
-              {/* 
-              <tr>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-                <td>
-                  <button
-                    type="button"
-                    class="btn  rounded-circle d-flex align-content-center"
-                  >
-                    +
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>Larry the Bird</td>
-                <td>Last</td>
-                <td>@twitter</td>
-                <td>
-                  <button
-                    type="button"
-                    class="btn  rounded-circle d-flex align-content-center"
-                  >
-                    +
-                  </button>
-                </td>
-              </tr> */}
-            </tbody>
+            <tbody></tbody>
           </Table>
         </Jumbotron>
       </Layout>

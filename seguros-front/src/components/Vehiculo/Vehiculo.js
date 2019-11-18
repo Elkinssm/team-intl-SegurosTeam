@@ -164,11 +164,7 @@ class Vehiculo extends Component {
                   onChange={this.handleInputChange}
                 />
               </Form.Group>
-              <Button
-                variant="success"
-                type="submit"
-                onClick={() => this.props.history.push("./admin")}
-              >
+              <Button variant="success" type="submit">
                 Añadir
               </Button>
               &nbsp;
