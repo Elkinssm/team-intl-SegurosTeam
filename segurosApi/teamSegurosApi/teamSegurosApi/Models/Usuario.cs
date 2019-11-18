@@ -16,8 +16,8 @@ namespace teamSegurosApi.Models
         public Guid? TipoDocumentoId { get; set; }
         public string NumeroDocumento { get; set; }
         public DateTime FechaNacimiento { get; set; }
-        public Guid? CiudadId { get; set; }
-        public Guid? RolId { get; set; }
+        public Guid CiudadId { get; set; }
+        public Guid RolId { get; set; }
         public string Email { get; set; }
         public string Clave { get; set; }
         public string Token { get; set; }

@@ -59,7 +59,7 @@ class Add extends Component {
         headers: headers
       })
       .then(response => {
-        alert("Vehiculo asegurado");
+        alert(response.data.message);
       })
       .catch(e => {
         alert("Se ha presentado un error: " + e.toString());

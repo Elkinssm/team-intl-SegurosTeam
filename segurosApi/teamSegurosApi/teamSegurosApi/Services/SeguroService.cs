@@ -50,8 +50,9 @@ namespace teamSegurosApi.Services
                 responsePackage.Message = "No se realizan ventas de seguro a menores de 16 años";
                 return responsePackage;
             }
+            var ciudad = _db.Ciudad.FirstOrDefault(c => c.Id == usuario.CiudadId);
 
-            if (usuario.Ciudad.Nombre == _validarNombreCiudad)
+            if (ciudad.Nombre == _validarNombreCiudad)
             {
                 porcentajeCiudad = 10;
             }
