@@ -14,7 +14,7 @@ namespace teamSegurosApi.Models
         public Guid Id { get; set; }
         public string Nombre { get; set; }
 
-        protected virtual ICollection<Modelo> Modelo { get; set; }
-        protected virtual ICollection<Vehiculo> Vehiculo { get; set; }
+        public virtual ICollection<Modelo> Modelo { get; set; }
+        public virtual ICollection<Vehiculo> Vehiculo { get; set; }
     }
 }

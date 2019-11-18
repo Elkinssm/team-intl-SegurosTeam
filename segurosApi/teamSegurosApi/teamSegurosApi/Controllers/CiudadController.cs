@@ -25,7 +25,6 @@ namespace teamSegurosApi.Controllers
         }
 
         [HttpPost]
-        [Route("SaveCiudad")]
         public void SaveCity(Ciudad ciudad)
         {
 
@@ -35,7 +34,6 @@ namespace teamSegurosApi.Controllers
         }
 
         [HttpPut]
-        [Route("UpdateCiudad")]
         public void UpdateCity(Ciudad ciudad)
         {
             var city = _context.Ciudad.FirstOrDefault(x => x.Id == ciudad.Id);
@@ -45,7 +43,6 @@ namespace teamSegurosApi.Controllers
         }
 
         [HttpDelete]
-        [Route("DeleteCiudad")]
         public void DeleteCity(Guid id)
         {
             var city = _context.Ciudad.FirstOrDefault(x => x.Id == id);
